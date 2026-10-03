@@ -80,9 +80,6 @@
 .ssl-hero h1 span{display:block;color:var(--blue)}
 .ssl-hero .lede{font-size:16px;line-height:1.65;color:var(--text-muted);max-width:430px;margin:0 0 34px}
 .ssl-cta{display:flex;gap:12px;flex-wrap:wrap}
-.ssl-status{display:flex;align-items:center;gap:10px;margin-top:34px;font-size:12px;color:var(--text-muted)}
-.ssl-status i{width:7px;height:7px;border-radius:50%;background:var(--safe);box-shadow:0 0 0 0 rgba(57,169,110,.4);animation:livePulse 2.4s ease-out infinite}
-@keyframes livePulse{70%{box-shadow:0 0 0 8px rgba(57,169,110,0)}100%{box-shadow:0 0 0 0 rgba(57,169,110,0)}}
 .wx{display:flex;align-items:center;gap:4px;margin-top:14px;font-size:11px;color:var(--text-muted)}
 .wx button{background:none;color:var(--text-muted);padding:4px 6px;font-size:11px;letter-spacing:.02em;border-radius:3px;transition:color .2s,background .2s}
 .wx button:hover{color:var(--navy)}
@@ -91,6 +88,10 @@
 
 .hero-scene{position:relative;height:min(72vh,680px);min-height:420px;will-change:transform}
 .hero-canvas{position:absolute;inset:-4% -6% -2% -6%}
+.hero-wx{position:absolute;z-index:6;left:50%;bottom:0;transform:translateX(-50%);margin:0;padding:8px;border:2px solid #111;border-radius:12px;background:rgba(255,255,255,.94);box-shadow:0 8px 24px rgba(16,36,92,.16);white-space:nowrap}
+.hero-wx button{padding:10px 14px;font-size:14px;font-weight:600;border-radius:7px}
+.hero-wx button[aria-pressed="true"]{background:#111;color:#fff}
+.hero-wx .sep{height:24px;background:#111;margin:0 4px}
 .hero-canvas canvas{display:block;width:100%!important;height:100%!important;opacity:0;transition:opacity 1.2s var(--ease)}
 .hero-canvas.ready canvas{opacity:1}
 .hero-canvas.fallback{background:url(stormsight-isometric-flood-home.png) center/contain no-repeat;-webkit-mask-image:radial-gradient(44% 46% at 50% 50%,#000 70%,transparent);mask-image:radial-gradient(44% 46% at 50% 50%,#000 70%,transparent)}
@@ -221,6 +222,8 @@
   .ssl-actions .ssl-text-btn{display:none}
   .ssl-hero h1{font-size:44px}
   .hero-scene{height:400px;min-height:0}
+  .hero-wx{bottom:-8px;padding:6px;max-width:calc(100vw - 32px)}
+  .hero-wx button{padding:8px 9px;font-size:12px}
   .note-risk{top:2%;right:0}
   .note-depth{left:0;bottom:6%}
   .note-place{display:none}

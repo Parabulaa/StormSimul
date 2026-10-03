@@ -68,17 +68,16 @@
         <button class="ssl-btn primary" data-scroll="s1">Explore StormSight</button>
         <button class="ssl-btn ghost" data-scroll="s2sim">View simulation</button>
       </div>
-      <div class="ssl-status"><i></i>Demo scenario · Tumana, Marikina</div>
-      <div class="wx" role="group" aria-label="Weather preview">
+    </div>
+    <div class="hero-scene" id="heroScene">
+      <div class="hero-canvas" id="heroCanvas" role="img" aria-label="3D model of a two-storey home with a car and trees, surrounded by moving flood water"></div>
+      <div class="wx hero-wx" role="group" aria-label="Weather preview">
         <button data-wx="clear" aria-pressed="false">Clear</button>
         <button data-wx="rain" aria-pressed="true">Rain</button>
         <button data-wx="storm" aria-pressed="false">Storm</button>
         <span class="sep"></span>
         <button data-pause aria-pressed="false">Pause motion</button>
       </div>
-    </div>
-    <div class="hero-scene" id="heroScene">
-      <div class="hero-canvas" id="heroCanvas" role="img" aria-label="3D model of a two-storey home with a car and trees, surrounded by moving flood water"></div>
       <svg class="scene-wires" aria-hidden="true">
         <line id="wireRisk"/><line id="wireDepth"/>
         <circle id="dotRisk" r="2.5"/><circle id="haloRisk" class="halo" r="5"/>
