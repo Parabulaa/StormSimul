@@ -48,16 +48,27 @@
       StormSight
     </button>
     <nav class="ssl-nav" aria-label="Public">
+      <button class="lnk" data-open-about aria-haspopup="dialog">About</button>
       <button class="lnk" data-scroll="s1">Product</button>
-      <button class="lnk" data-scroll="s2sim">How it works</button>
-      <button class="lnk" data-open-data aria-haspopup="dialog">Data</button>
-      <button class="lnk" data-toast="StormSight is a flood-preparedness prototype for Philippine communities.">About</button>
+      <button class="lnk" data-open-data aria-haspopup="dialog">How data works</button>
     </nav>
-    <div class="ssl-actions">
-      <button class="ssl-text-btn" data-view="login">Log in</button>
-      <button class="ssl-btn primary small" data-view="signup">Get started</button>
-    </div>
   </header>
+
+  <div class="data-dialog" id="aboutDialog" hidden>
+    <button class="data-dialog-backdrop" data-close-about aria-label="Close About StormSight"></button>
+    <section class="data-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="aboutDialogTitle" aria-describedby="aboutDialogCopy">
+      <button class="data-dialog-close" data-close-about aria-label="Close About StormSight">×</button>
+      <div class="ssl-eyebrow">About StormSight</div>
+      <h2 id="aboutDialogTitle">Flood preparedness, made easier to understand.</h2>
+      <p id="aboutDialogCopy">StormSight is a community-focused web platform that turns forecast rainfall and public hazard data into a clear view of potential local flooding before landfall.</p>
+      <div class="about-overview">
+        <div><b>See the risk</b><span>Understand the likely flood scenario for your area.</span></div>
+        <div><b>Explore locally</b><span>View projected water conditions around homes and streets.</span></div>
+        <div><b>Prepare earlier</b><span>Use clearer timing and context to support safer decisions.</span></div>
+      </div>
+      <p class="data-disclaimer">StormSight is a preparedness tool—not an official warning service.</p>
+    </section>
+  </div>
 
   <div class="data-dialog" id="dataSourcesDialog" hidden>
     <button class="data-dialog-backdrop" data-close-data aria-label="Close data sources"></button>
@@ -695,21 +706,27 @@
     }));
     root.querySelectorAll('[data-view]').forEach((b) => on(b, 'click', () => window.go?.(b.dataset.view)));
     root.querySelectorAll('[data-toast]').forEach((b) => on(b, 'click', () => window.toast?.(b.dataset.toast)));
-    const dataBtn = $('[data-open-data]');
-    const dataDialog = $('#dataSourcesDialog');
-    const closeDataDialog = () => {
-      if (!dataDialog || dataDialog.hidden) return;
-      dataDialog.classList.remove('open');
-      setTimeout(() => { if (!dataDialog.classList.contains('open')) dataDialog.hidden = true; }, 220);
-      dataBtn?.focus();
+    const dialogClosers = [];
+    const wireDialog = (openSelector, dialogSelector, closeSelector) => {
+      const button = $(openSelector);
+      const dialog = $(dialogSelector);
+      const close = () => {
+        if (!dialog || dialog.hidden) return;
+        dialog.classList.remove('open');
+        setTimeout(() => { if (!dialog.classList.contains('open')) dialog.hidden = true; }, 220);
+        button?.focus();
+      };
+      on(button, 'click', () => {
+        dialog.hidden = false;
+        requestAnimationFrame(() => dialog.classList.add('open'));
+        dialog.querySelector('.data-dialog-close')?.focus();
+      });
+      dialog.querySelectorAll(closeSelector).forEach((b) => on(b, 'click', close));
+      dialogClosers.push(close);
     };
-    on(dataBtn, 'click', () => {
-      dataDialog.hidden = false;
-      requestAnimationFrame(() => dataDialog.classList.add('open'));
-      dataDialog.querySelector('.data-dialog-close')?.focus();
-    });
-    dataDialog.querySelectorAll('[data-close-data]').forEach((b) => on(b, 'click', closeDataDialog));
-    on(window, 'keydown', (e) => { if (e.key === 'Escape') closeDataDialog(); });
+    wireDialog('[data-open-about]', '#aboutDialog', '[data-close-about]');
+    wireDialog('[data-open-data]', '#dataSourcesDialog', '[data-close-data]');
+    on(window, 'keydown', (e) => { if (e.key === 'Escape') dialogClosers.forEach((close) => close()); });
 
     // header + river reveal on scroll
     const header = $('#sslHeader');
