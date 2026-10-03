@@ -9,6 +9,11 @@ http.createServer((req,res)=>{
   if (!file.startsWith(root)) { res.writeHead(403); return res.end('Forbidden'); }
   fs.readFile(file,(err,data)=>{
     if(err){res.writeHead(404);return res.end('Not found')}
-    res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream'});res.end(data);
+    res.writeHead(200,{
+      'Content-Type':types[path.extname(file)]||'application/octet-stream',
+      'Cache-Control':'no-store, no-cache, must-revalidate',
+      'Pragma':'no-cache',
+      'Expires':'0'
+    });res.end(data);
   });
 }).listen(4173,'127.0.0.1',()=>console.log('Local: http://127.0.0.1:4173'));

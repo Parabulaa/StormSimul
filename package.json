@@ -1,0 +1,13 @@
+{
+  "name": "stormsight",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Flood preparedness prototype for Philippine communities",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node preview-server.js",
+    "start": "node preview-server.js",
+    "check": "node scripts/check.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
