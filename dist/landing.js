@@ -49,8 +49,8 @@
     </button>
     <nav class="ssl-nav" aria-label="Public">
       <button class="lnk" data-scroll="s1">Product</button>
-      <button class="lnk" data-scroll="s2">How it works</button>
-      <button class="lnk" data-toast="Demo data sources: PAGASA, Project NOAH, ECMWF and GloFAS">Data</button>
+      <button class="lnk" data-scroll="s2sim">How it works</button>
+      <button class="lnk" data-open-data aria-haspopup="dialog">Data</button>
       <button class="lnk" data-toast="StormSight is a flood-preparedness prototype for Philippine communities.">About</button>
     </nav>
     <div class="ssl-actions">
@@ -58,6 +58,24 @@
       <button class="ssl-btn primary small" data-view="signup">Get started</button>
     </div>
   </header>
+
+  <div class="data-dialog" id="dataSourcesDialog" hidden>
+    <button class="data-dialog-backdrop" data-close-data aria-label="Close data sources"></button>
+    <section class="data-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="dataDialogTitle" aria-describedby="dataDialogCopy">
+      <button class="data-dialog-close" data-close-data aria-label="Close data sources">×</button>
+      <div class="ssl-eyebrow">Data sources</div>
+      <h2 id="dataDialogTitle">Built from public data.</h2>
+      <p id="dataDialogCopy">StormSight combines forecast, hazard, map and elevation data to explain local flood risk.</p>
+      <div class="data-source-list" aria-label="StormSight data sources">
+        <div class="data-source-row"><b>Open-Meteo</b><span>ECMWF forecasts and ERA5 rainfall</span></div>
+        <div class="data-source-row"><b>Project NOAH</b><span>5, 25 and 100-year flood hazard maps</span></div>
+        <div class="data-source-row"><b>OpenStreetMap</b><span>Roads, places and infrastructure context</span></div>
+        <div class="data-source-row"><b>SRTM</b><span>Terrain elevation</span></div>
+      </div>
+      <div class="data-source-foot"><span>Public datasets</span><i aria-hidden="true"></i><b>StormSight flood-risk view</b></div>
+      <p class="data-disclaimer">Preparedness guidance—not an official warning.</p>
+    </section>
+  </div>
 
   <section class="ssl-hero" id="top">
     <div class="ssl-hero-text">
@@ -673,10 +691,25 @@
     root.querySelectorAll('[data-scroll]').forEach((b) => on(b, 'click', () => {
       const id = b.dataset.scroll;
       const el = id === 'top' ? root : $('#' + id);
-      el?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: id === 's2sim' ? 'center' : 'start' });
+      el?.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
     }));
     root.querySelectorAll('[data-view]').forEach((b) => on(b, 'click', () => window.go?.(b.dataset.view)));
     root.querySelectorAll('[data-toast]').forEach((b) => on(b, 'click', () => window.toast?.(b.dataset.toast)));
+    const dataBtn = $('[data-open-data]');
+    const dataDialog = $('#dataSourcesDialog');
+    const closeDataDialog = () => {
+      if (!dataDialog || dataDialog.hidden) return;
+      dataDialog.classList.remove('open');
+      setTimeout(() => { if (!dataDialog.classList.contains('open')) dataDialog.hidden = true; }, 220);
+      dataBtn?.focus();
+    };
+    on(dataBtn, 'click', () => {
+      dataDialog.hidden = false;
+      requestAnimationFrame(() => dataDialog.classList.add('open'));
+      dataDialog.querySelector('.data-dialog-close')?.focus();
+    });
+    dataDialog.querySelectorAll('[data-close-data]').forEach((b) => on(b, 'click', closeDataDialog));
+    on(window, 'keydown', (e) => { if (e.key === 'Escape') closeDataDialog(); });
 
     // header + river reveal on scroll
     const header = $('#sslHeader');
