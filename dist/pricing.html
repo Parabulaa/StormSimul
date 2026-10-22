@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="StormSight pricing: free flood maps for every resident, Premium for barangays and businesses, and VIP for city governments." />
+  <title>Pricing · StormSight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%232e69f2' d='M16 2 29 15 16 30 3 15z'/%3E%3Cpath fill='white' d='M9 19c4 2 6-1 9-1 2 0 3 1 5 1-2 5-5 7-7 7s-5-2-7-7Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="pricing.css" />
+</head>
+<body class="pr">
+  <div class="pr-atmo" aria-hidden="true"><i class="pr-g pr-g1"></i><i class="pr-g pr-g2"></i></div>
+
+  <header class="pr-header" id="prHeader">
+    <a class="pr-brand" href="/" aria-label="StormSight home">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5 21 12l-9 9.5L3 12z" fill="#2E69F2"/><path d="M7.5 13.2c2.6 1.4 4.2-.7 6.2-.7 1.4 0 2 .6 3 .7-1.3 3-3.1 4.3-4.7 4.3s-3.3-1.2-4.5-4.3Z" fill="#fff"/></svg>
+      StormSight
+    </a>
+    <nav class="pr-nav" aria-label="Pricing">
+      <a href="/">Home</a>
+      <a href="#plans" aria-current="page">Pricing</a>
+      <a href="#node">Sensor node</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="pr-header-cta"><a class="pr-btn primary small" href="/#signup">Get started</a></div>
+  </header>
+
+  <main>
+    <section class="pr-hero">
+      <div class="pr-eyebrow">Pricing</div>
+      <h1>Free for every resident.<br><span>Built for the people who plan.</span></h1>
+      <p class="pr-lede">Street-level flood maps stay free, because safety information should be. Barangays, businesses and city governments pay for alerts, live sensors and planning tools.</p>
+    </section>
+
+    <section class="pr-plans" id="plans" aria-label="Plans">
+      <!-- Free -->
+      <article class="pr-card">
+        <div class="pr-tier">Free</div>
+        <h2>Community</h2>
+        <p class="pr-for">For residents of Metro Manila</p>
+        <div class="pr-price"><span class="amt">₱0</span><span class="per">free, always</span></div>
+        <a class="pr-btn ghost" href="/#signup">Start free</a>
+        <ul class="pr-list">
+          <li>Flood map for all 17 NCR cities</li>
+          <li>Street search with hazard class and likely depth</li>
+          <li>Hour-by-hour storm timeline</li>
+          <li>3D water view of your area</li>
+          <li>What-if rainfall slider and past-storm replays</li>
+        </ul>
+      </article>
+
+      <!-- Premium -->
+      <article class="pr-card featured" id="premiumCard">
+        <div class="pr-tier accent">Premium</div>
+        <div class="pr-seg" role="group" aria-label="Premium plan for">
+          <button type="button" data-plan="barangay" aria-pressed="true">Barangay</button>
+          <button type="button" data-plan="business" aria-pressed="false">Business</button>
+        </div>
+
+        <div class="pr-variant" data-variant="barangay">
+          <h2>Barangay Pro</h2>
+          <p class="pr-for">For barangay DRRM offices</p>
+          <div class="pr-price"><span class="amt">₱1,000</span><span class="per">per barangay / month</span></div>
+          <a class="pr-btn primary" href="/#signup">Get Barangay Pro</a>
+          <ul class="pr-list">
+            <li><b>Everything in Free</b></li>
+            <li>Barangay flood dashboard</li>
+            <li>SMS flood alerts for officers and residents</li>
+            <li>Live readings from StormSimul Nodes</li>
+            <li>Storm reports for evacuation planning</li>
+          </ul>
+        </div>
+
+        <div class="pr-variant" data-variant="business" hidden>
+          <h2>Business Site</h2>
+          <p class="pr-for">For warehouses, malls, schools and logistics</p>
+          <div class="pr-price"><span class="amt">₱3,000</span><span class="per">per site / month</span></div>
+          <a class="pr-btn primary" href="/#signup">Get Business Site</a>
+          <ul class="pr-list">
+            <li><b>Everything in Free</b></li>
+            <li>Flood alerts for each of your sites</li>
+            <li>Site flood reports before each storm</li>
+            <li>Lead time to move stock, vehicles and equipment</li>
+            <li>Optional StormSimul Node at your site</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- VIP -->
+      <article class="pr-card vip">
+        <div class="pr-tier gold">VIP · Government</div>
+        <h2>City Command</h2>
+        <p class="pr-for">For city and municipal DRRM offices</p>
+        <div class="pr-price"><span class="amt">₱20,000</span><span class="per">per city / month</span></div>
+        <a class="pr-btn light" href="/#signup">Request City Command</a>
+        <ul class="pr-list">
+          <li><b>Everything in Premium, for every barangay</b></li>
+          <li>All barangays in one command dashboard</li>
+          <li>City planning and post-storm reports</li>
+          <li>API access for city systems</li>
+          <li>Onboarding and training for DRRM staff</li>
+          <li>Priority alert hotline</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="pr-node" id="node" aria-labelledby="nodeTitle">
+      <div class="pr-node-copy">
+        <div class="pr-eyebrow">Hardware add-on</div>
+        <h2 id="nodeTitle">StormSimul Node</h2>
+        <p>A solar-powered rain and water-level sensor mounted on an existing post beside a creek. It checks the forecast against real water levels during the storm.</p>
+        <div class="pr-price node"><span class="amt">₱10,500</span><span class="per">per unit, installed · one-time</span></div>
+        <p class="pr-note">Works with Premium and VIP plans.</p>
+      </div>
+      <dl class="pr-specs">
+        <div><dt>Power</dt><dd>10 W solar panel, keeps running in blackouts</dd></div>
+        <div><dt>Water level</dt><dd>Ultrasonic, 0.2 to 6 m, never touches water</dd></div>
+        <div><dt>Rainfall</dt><dd>Tipping-bucket rain gauge</dd></div>
+        <div><dt>Link</dt><dd>LoRa radio to the barangay hall</dd></div>
+        <div><dt>Build</dt><dd>IP65 enclosure, stainless clamps, about 2.5 kg</dd></div>
+      </dl>
+    </section>
+
+    <section class="pr-compare" aria-labelledby="compareTitle">
+      <h2 id="compareTitle">Compare plans</h2>
+      <div class="pr-table-wrap">
+        <table class="pr-table">
+          <thead>
+            <tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col">Premium</th><th scope="col">VIP · Government</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Flood map and street search</th><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+            <tr><th scope="row">Storm timeline and 3D water view</th><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+            <tr><th scope="row">SMS flood alerts</th><td>—</td><td>Yes</td><td>Yes</td></tr>
+            <tr><th scope="row">Dashboard</th><td>—</td><td>Barangay or site</td><td>Whole city</td></tr>
+            <tr><th scope="row">Live sensor data</th><td>—</td><td>Yes</td><td>Yes</td></tr>
+            <tr><th scope="row">Planning reports</th><td>—</td><td>Storm reports</td><td>City planning reports</td></tr>
+            <tr><th scope="row">API access</th><td>—</td><td>—</td><td>Yes</td></tr>
+            <tr><th scope="row">Training and priority hotline</th><td>—</td><td>—</td><td>Yes</td></tr>
+            <tr class="price-row"><th scope="row">Price</th><td>₱0</td><td>₱1,000 / barangay / mo<br>₱3,000 / site / mo</td><td>₱20,000 / city / mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="pr-faq" id="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Questions</h2>
+      <details>
+        <summary>Why is it free for residents?</summary>
+        <p>Flood safety information should reach every household, including families who cannot pay. Barangays, businesses and cities fund the service through their plans.</p>
+      </details>
+      <details>
+        <summary>Can a barangay pay from its disaster fund?</summary>
+        <p>Barangay Pro and the StormSimul Node are priced to fit within a barangay’s local disaster risk reduction fund, which RA 10121 sets at no less than 5% of its estimated regular revenue. Check with your treasurer for the rules that apply to your LGU.</p>
+      </details>
+      <details>
+        <summary>Do I need a sensor node to use Premium?</summary>
+        <p>No. Premium works from forecasts and flood hazard maps alone. Nodes add live water-level readings for the creeks and roads you choose.</p>
+      </details>
+      <details>
+        <summary>Is StormSight an official warning service?</summary>
+        <p>No. It is a preparedness tool. Always follow PAGASA and LGU advisories.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="pr-foot">
+    <span>StormSight · Flood preparedness prototype · Prices in Philippine pesos</span>
+    <span>Demo data, not an official warning. Follow PAGASA and LGU advisories.</span>
+  </footer>
+
+  <script src="pricing.js"></script>
+</body>
+</html>
