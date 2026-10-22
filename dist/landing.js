@@ -51,6 +51,7 @@
       <button class="lnk" data-open-about aria-haspopup="dialog">About</button>
       <button class="lnk" data-scroll="s1">Product</button>
       <button class="lnk" data-open-data aria-haspopup="dialog">How data works</button>
+      <a class="lnk" href="/pricing">Pricing</a>
     </nav>
   </header>
 
@@ -178,6 +179,7 @@
 
   <footer class="ssl-foot">
     <span>StormSight · Flood preparedness prototype</span>
+    <a href="/pricing">Pricing</a>
     <span>Demo data, not an official warning. Follow PAGASA and LGU advisories.</span>
   </footer>
 </div>`;
